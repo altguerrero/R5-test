@@ -1,23 +1,23 @@
-import React from 'react'
-import SearchInput from './components/SearchInput'
-import {BookType} from './components/Book'
-import Books from './components/Books'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Layout from "./Layout";
 
-interface Response {
-  data?: {
-    items: BookType[]
-  }
-}
+const Home = lazy(() => import("./views/Home"));
+const BookStore = lazy(() => import("./views/BookStore"));
 
-const App = () =>  {
-  const [response, setResponse] = React.useState<Response>({})
+const App = () => {
   return (
-    <div>
-      <SearchInput setResponse={setResponse} />
-	{response.data && <Books books={response.data.items} /> }
-    </div>
-  )
-}
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="bookstore" element={<BookStore />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </Router>
+  );
+};
 
-
-export default App
+export default App;
