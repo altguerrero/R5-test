@@ -1,3 +1,4 @@
+import BookContainer from "@/components/book/BookContainer";
 import BookSearch from "@/components/shared/search/BookSearch";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
   return (
     <section>
       <BookSearch title="Discover" onSearch={handleSearch} />
+      <BookContainer />
     </section>
   );
 };
