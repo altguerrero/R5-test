@@ -1,13 +1,7 @@
-import BookCard from "./BookCard";
-import BookList from "./BookList";
-import { FAKE_BOOKS } from "@/constants";
+import React from "react";
 
-const BookContainer = () => {
-  return (
-    <section className="pt-16">
-      <BookList books={FAKE_BOOKS} render={(book) => <BookCard {...book} />} />
-    </section>
-  );
+const BookContainer = ({ children }: { children: React.ReactNode }) => {
+  return <section className="pt-16">{children}</section>;
 };
 
 export default BookContainer;
