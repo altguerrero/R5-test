@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SearchInput from "./SearchInput";
 import { Search, X } from "lucide-react";
 
-interface BookSearchProps {
+interface GlobalSearchProps {
   title: string;
   onSearch: (searchValue: string) => void;
 }
 
-const BookSearch = ({ title, onSearch }: BookSearchProps) => {
+const GlobalSearch = ({ title, onSearch }: GlobalSearchProps) => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
   const handleFocus = () => setIsSearchFocused(true);
   const handleBlur = () => setIsSearchFocused(false);
-
   const handleSearch = () => onSearch(searchValue);
-
   const handleToggleSearch = () => setIsSearchActive(!isSearchActive);
 
   return (
@@ -64,4 +62,4 @@ const BookSearch = ({ title, onSearch }: BookSearchProps) => {
   );
 };
 
-export default BookSearch;
+export default GlobalSearch;

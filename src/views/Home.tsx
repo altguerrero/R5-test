@@ -1,15 +1,30 @@
-import BookContainer from "@/components/book/BookContainer";
-import BookSearch from "@/components/shared/search/BookSearch";
-import BookList from "@/components/book/BookList";
-import BookCard from "@/components/book/BookCard";
-import useGoogleBookSearch from "@/hooks/useGoogleBookSearch";
+import {
+  BookCard,
+  BookContainer,
+  BookList,
+  BookSkeleton,
+} from "@/components/book";
+import { GlobalSearch } from "@/components/shared/search";
+import { useGoogleBookSearch } from "@/hooks";
 
 const Home = () => {
-  const { data, handleSearch } = useGoogleBookSearch("js");
+  const { data, isLoading, handleSearch } = useGoogleBookSearch("js");
 
   return (
     <section>
-      <BookSearch title="Discover" onSearch={handleSearch} />
+      <GlobalSearch title="Discover" onSearch={handleSearch} />
+      {isLoading && (
+        <BookContainer>
+          <BookList
+            books={Array(10).fill({
+              id: "",
+              title: "",
+              imgURL: "",
+            })}
+            render={() => <BookSkeleton />}
+          />
+        </BookContainer>
+      )}
       {data && (
         <BookContainer>
           <BookList
