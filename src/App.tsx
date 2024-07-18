@@ -6,6 +6,7 @@ import { Loader } from "@/components/shared/loader";
 
 const Home = lazy(() => import("./views/Home"));
 const BookStore = lazy(() => import("./views/BookStore"));
+const Detail = lazy(() => import("./views/Detail"));
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="bookstore" element={<BookStore />} />
+              <Route path="/bookstore/:id/:title" element={<Detail />} />
             </Route>
           </Routes>
         </Suspense>

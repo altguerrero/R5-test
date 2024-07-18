@@ -1,9 +1,5 @@
-import {
-  BookContainer,
-  BookList,
-  BookSkeleton,
-  BookCard,
-} from "@/components/book";
+import { BookContainer, BookList, BookSkeleton } from "@/components/book";
+import BookLink from "@/components/book/BookLink";
 import { GlobalSearch } from "@/components/shared/search";
 import { useOpenLibrarySearch } from "@/hooks";
 
@@ -29,7 +25,7 @@ const BookStore = () => {
         <BookContainer>
           <BookList
             books={data}
-            render={(book) => <BookCard key={book.id} {...book} />}
+            render={(book) => <BookLink key={book.id} book={book} />}
           />
         </BookContainer>
       )}

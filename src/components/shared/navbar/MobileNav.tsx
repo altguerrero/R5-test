@@ -23,7 +23,7 @@ const NavContent = () => {
               className={`${isActive && "rounded-lg bg-primary"} flex items-center justify-start gap-4 p-4`}
             >
               <img
-                src={item.imgULR}
+                src={item.imgURl}
                 alt={item.label}
                 width={20}
                 height={20}

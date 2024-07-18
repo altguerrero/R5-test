@@ -1,11 +1,11 @@
 import { useState } from "react";
 import useBookSearch from "@/hooks/useBookSearch";
-import { AdapterFunction, BuildUrlFunction } from "@/types";
+import { AdapterFunction, Book, BuildUrlFunction } from "@/types";
 
 const useGenericBookSearch = <T>(
   initialQuery: string,
   apiUrl: string,
-  adapter: AdapterFunction<T>,
+  adapter: AdapterFunction<T, Book[]>,
   buildUrl: BuildUrlFunction
 ) => {
   const [searchQuery, setSearchQuery] = useState(initialQuery);
