@@ -22,5 +22,13 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    camelcase: [
+      "error",
+      {
+        ignoreDestructuring: true,
+        properties: "never",
+        allow: ["last_modified", "first_publish_date", "latest_revision"],
+      },
+    ],
   },
 };
