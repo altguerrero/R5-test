@@ -3,10 +3,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import Layout from "./Layout";
 import { Loader } from "@/components/shared/loader";
+import { Toaster } from "./components/ui/toaster";
 
 const Home = lazy(() => import("./views/Home"));
 const BookStore = lazy(() => import("./views/BookStore"));
 const Detail = lazy(() => import("./views/Detail"));
+const Library = lazy(() => import("./views/Library"));
 
 const queryClient = new QueryClient();
 
@@ -26,10 +28,12 @@ const App = () => {
               <Route index element={<Home />} />
               <Route path="bookstore" element={<BookStore />} />
               <Route path="/bookstore/:id/:title" element={<Detail />} />
+              <Route path="/library" element={<Library />} />
             </Route>
           </Routes>
         </Suspense>
       </Router>
+      <Toaster />
     </QueryClientProvider>
   );
 };

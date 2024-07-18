@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchInput from "./SearchInput";
 import { Search, X } from "lucide-react";
+import { Title } from "../Title";
 
 interface GlobalSearchProps {
   title: string;
@@ -20,11 +21,9 @@ const GlobalSearch = ({ title, onSearch }: GlobalSearchProps) => {
   return (
     <section className="flex min-h-[56px] items-center justify-between gap-4">
       <div>
-        <h1
-          className={`${isSearchActive && "max-lg:hidden"} text-3xl font-bold lg:text-6xl`}
-        >
+        <Title className={`${isSearchActive && "max-lg:hidden"}`}>
           {title}
-        </h1>
+        </Title>
         <SearchInput
           className={`lg:hidden ${!isSearchActive && "hidden"}`}
           searchValue={searchValue}

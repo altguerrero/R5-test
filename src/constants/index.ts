@@ -60,3 +60,5 @@ export const FAKE_BOOKS: Book[] = [
     imgURL: "https://via.placeholder.com/180x270",
   },
 ];
+
+export const FAVORITES_KEY = "favorites";

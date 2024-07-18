@@ -78,7 +78,7 @@ export const adapterOpenLibraryDetails = async (
     description: bookDescription,
     imgURL:
       covers && covers.length > 0
-        ? `https://covers.openlibrary.org/b/id/${covers[0]}-L.jpg`
+        ? `https://covers.openlibrary.org/b/id/${covers[0] !== -1 ? covers[0] : covers[1]}-L.jpg`
         : "",
     created: created.value,
     lastModified: last_modified.value,

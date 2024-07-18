@@ -2,33 +2,27 @@ import React from "react";
 import { BookDetails } from "@/types";
 import { Button } from "../ui/button";
 import { Bookmark, Edit, Clock, Calendar, ArrowLeft } from "lucide-react";
-import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "@/lib/utils";
+import { useFavorites } from "@/hooks";
 
 interface BookDetailProps {
   book: BookDetails | undefined;
 }
 
-const formatDate = (dateString: string) => {
-  if (!dateString) return "N/A";
-  try {
-    return format(new Date(dateString), "MMMM dd, yyyy");
-  } catch {
-    return "Invalid Date";
-  }
-};
-
 const BookDetail = ({ book }: BookDetailProps) => {
+  const { isFav, toggleFavorite } = useFavorites(book?.id ?? "", book);
+
   if (!book) {
     return null;
   }
 
   return (
     <section className="container mx-auto p-4">
-      <BookGoBack />
+      <BookGoBack isFav={isFav} onBookmarkClick={toggleFavorite} />
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
         <BookImage book={book} />
-        <BookInfo book={book} />
+        <BookInfo book={book} isFav={isFav} onBookmarkClick={toggleFavorite} />
       </div>
     </section>
   );
@@ -36,7 +30,13 @@ const BookDetail = ({ book }: BookDetailProps) => {
 
 export default BookDetail;
 
-const BookGoBack = () => {
+const BookGoBack = ({
+  isFav,
+  onBookmarkClick,
+}: {
+  isFav: boolean;
+  onBookmarkClick: () => void;
+}) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
@@ -52,8 +52,13 @@ const BookGoBack = () => {
         <ArrowLeft />
         <span className="text-xl font-bold">Go back</span>
       </div>
-      <Button variant="outline" size="icon" className="bg-black/5">
-        <Bookmark className="size-5" />
+      <Button
+        variant="outline"
+        size="icon"
+        className="bg-black/5 hover:bg-black/5 lg:hidden"
+        onClick={onBookmarkClick}
+      >
+        <Bookmark className={`${isFav && "fill-black"} size-5`} />
       </Button>
     </div>
   );
@@ -73,22 +78,39 @@ const BookImage = ({ book }: { book: BookDetails }) => {
   );
 };
 
-const BookTitle = ({ title }: { title: string }) => {
+const BookTitle = ({
+  title,
+  isFav,
+  onBookmarkClick,
+}: {
+  title: string;
+  isFav: boolean;
+  onBookmarkClick: () => void;
+}) => {
   return (
     <div className="mb-2 flex w-full items-center justify-center gap-4 lg:mb-16 lg:justify-between">
       <h1 className="text-2xl font-bold lg:text-5xl">{title}</h1>
       <Button
         variant="outline"
         size="icon"
-        className="bg-black/5 max-lg:hidden"
+        className="bg-black/5 hover:bg-black/5 max-lg:hidden"
+        onClick={onBookmarkClick}
       >
-        <Bookmark className="size-5" />
+        <Bookmark className={`${isFav && "fill-black"} size-5`} />
       </Button>
     </div>
   );
 };
 
-const BookInfo = ({ book }: { book: BookDetails }) => {
+const BookInfo = ({
+  book,
+  isFav,
+  onBookmarkClick,
+}: {
+  book: BookDetails;
+  isFav: boolean;
+  onBookmarkClick: () => void;
+}) => {
   const {
     title,
     description,
@@ -101,7 +123,11 @@ const BookInfo = ({ book }: { book: BookDetails }) => {
 
   return (
     <div className="flex flex-col">
-      <BookTitle title={title} />
+      <BookTitle
+        title={title}
+        isFav={isFav}
+        onBookmarkClick={onBookmarkClick}
+      />
       <BookAuthors authors={authors} />
       <BookDates
         created={created}
