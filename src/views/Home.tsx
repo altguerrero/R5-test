@@ -5,10 +5,10 @@ import {
   BookSkeleton,
 } from "@/components/book";
 import { GlobalSearch } from "@/components/shared/search";
-import { useGoogleBookSearch } from "@/hooks";
+import useGoogleBookSearch from "@/hooks/useGoogleBookSearch";
 
 const Home = () => {
-  const { data, isLoading, handleSearch } = useGoogleBookSearch("js");
+  const { data, isLoading, isError, handleSearch } = useGoogleBookSearch("js");
 
   return (
     <section>
@@ -25,6 +25,7 @@ const Home = () => {
           />
         </BookContainer>
       )}
+      {isError && <div>Error</div>}
       {data && (
         <BookContainer>
           <BookList

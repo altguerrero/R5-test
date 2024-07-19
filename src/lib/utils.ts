@@ -7,7 +7,6 @@ import { format } from "date-fns";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
 export const formatDate = (dateString: string) => {
   if (!dateString) return "N/A";
   try {

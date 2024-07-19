@@ -1,6 +1,6 @@
 const Loader = ({ className }: { className?: string }) => {
   return (
-    <div role="status">
+    <div role="status" data-testid="loader">
       <svg
         aria-hidden="true"
         className={`${className} inline size-16 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600`}

@@ -4,6 +4,7 @@ import {
   SheetClose,
   SheetContent,
   SheetTrigger,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { NAVBAR_LINKS } from "@/constants";

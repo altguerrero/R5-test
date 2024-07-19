@@ -3,7 +3,9 @@ import axios from "axios";
 import { BookDetails, OpenLibraryResponse } from "@/types";
 import { adapterOpenLibraryDetails } from "@/adapters";
 
-const fetchBookDetails = async (bookId: string): Promise<BookDetails> => {
+export const fetchBookDetails = async (
+  bookId: string
+): Promise<BookDetails> => {
   const { data } = await axios.get<OpenLibraryResponse>(
     `https://openlibrary.org/works/${bookId}.json`
   );

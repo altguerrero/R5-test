@@ -4,23 +4,25 @@ import { GlobalSearch } from "@/components/shared/search";
 import { useOpenLibrarySearch } from "@/hooks";
 
 const BookStore = () => {
-  const { data, isLoading, handleSearch } = useOpenLibrarySearch("fiction");
+  const { data, isLoading, isError, handleSearch } =
+    useOpenLibrarySearch("fiction");
 
   return (
     <section>
       <GlobalSearch title="Explore" onSearch={handleSearch} />
       {isLoading && (
-        <BookContainer>
+        <BookContainer data-testid="loading-state">
           <BookList
             books={Array(10).fill({
               id: "",
               title: "",
               imgURL: "",
             })}
-            render={() => <BookSkeleton />}
+            render={() => <BookSkeleton data-testid="skeleton" />}
           />
         </BookContainer>
       )}
+      {isError && <div data-testid="error-state">Error loading books.</div>}
       {data && (
         <BookContainer>
           <BookList

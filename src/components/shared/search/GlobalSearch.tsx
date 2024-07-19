@@ -47,12 +47,16 @@ const GlobalSearch = ({ title, onSearch }: GlobalSearchProps) => {
         <Search
           width={24}
           height={24}
+          role="button"
+          aria-label="search"
           className={`${isSearchActive && "hidden"} cursor-pointer`}
           onClick={handleToggleSearch}
         />
         <X
           width={24}
           height={24}
+          role="button"
+          aria-label="close"
           className={`${!isSearchActive && "hidden"} cursor-pointer`}
           onClick={handleToggleSearch}
         />
