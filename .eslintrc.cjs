@@ -6,6 +6,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:tailwindcss/recommended",
+    "plugin:jest/recommended",
     "standard",
     "prettier",
   ],
@@ -16,6 +17,7 @@ module.exports = {
     "@typescript-eslint",
     "react-hooks",
     "tailwindcss",
+    "jest",
   ],
   rules: {
     "react-refresh/only-export-components": [

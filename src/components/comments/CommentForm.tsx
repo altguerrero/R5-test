@@ -29,6 +29,10 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
   const form = useForm<CommentInput>({
     resolver: zodResolver(commentSchema),
     mode: "onChange",
+    defaultValues: {
+      name: "",
+      comment: "",
+    },
   });
 
   const handleFormSubmit = (data: CommentInput) => {
