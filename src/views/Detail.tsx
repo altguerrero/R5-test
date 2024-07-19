@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useBookDetails from "@/hooks/useBookDetails";
 import { BookDetail, BookDetailSkeleton } from "@/components/book";
+import { Comments } from "@/components/comments";
 
 const Detail = () => {
   const { id = "" } = useParams<{ id: string }>();
@@ -14,7 +15,12 @@ const Detail = () => {
     return <div>Error loading book details.</div>;
   }
 
-  return <BookDetail book={book} />;
+  return (
+    <div className="flex flex-col gap-8">
+      <BookDetail book={book} />
+      <Comments bookId={id} />
+    </div>
+  );
 };
 
 export default Detail;
