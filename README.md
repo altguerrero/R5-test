@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+# Mi Proyecto de Aplicación
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+Esta es una aplicación desarrollada con React, React Router y React Query. La aplicación permite a los usuarios explorar una tienda de libros, ver detalles de libros específicos y gestionar su biblioteca personal.
 
-In the project directory, you can run:
+## Tabla de Contenidos
 
-### `npm start`
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Ejecución de Pruebas](#ejecución-de-pruebas)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalación
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Para instalar y ejecutar la aplicación localmente, sigue estos pasos:
 
-### `npm test`
+1. Clona el repositorio:
+   ```bash
+   git clone git@github.com:altguerrero/R5-test.git
+   ```
+2. Navega al directorio del proyecto:
+   ```bash
+   cd R5-test
+   ```
+3. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Uso
 
-### `npm run build`
+Para iniciar la aplicación en modo de desarrollo, ejecuta:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Esto iniciará la aplicación en `http://localhost:5173`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Ejecución de Pruebas
 
-### `npm run eject`
+Para ejecutar las pruebas unitarias y de integración, usa el siguiente comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm test
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Esto ejecutará todas las pruebas definidas en el proyecto utilizando Jest y React Testing Library.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Estructura del Proyecto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A continuación se muestra una descripción general de la estructura del proyecto:
 
-## Learn More
+```
+├── public
+│   ├── index.html
+├── src
+│   ├── components
+│   │   └── shared
+│   │       ├── Loader.tsx
+│   │       ├── Navbar.tsx
+│   ├── views
+│   │   ├── Home.tsx
+│   │   ├── BookStore.tsx
+│   │   ├── Detail.tsx
+│   │   ├── Library.tsx
+│   ├── App.tsx
+│   ├── Layout.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── __test__
+│       ├── App.test.tsx
+│       ├── main.test.tsx
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contribuciones
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+¡Las contribuciones son bienvenidas! Para contribuir, sigue estos pasos:
+
+1. Realiza un fork del proyecto.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y realiza un commit (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Sube tu rama (`git push origin feature/nueva-funcionalidad`).
+5. Crea un nuevo Pull Request.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE).
